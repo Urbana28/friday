@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
 import {Redirect, Route} from "react-router-dom";
 import SignInPage from '../../neko-2-sign-in/sign-in-1-ui/SignInPage';
 import RegisterPage from '../../neko-3-register/register-1-ui/RegisterPage';
 import ForgotPage from '../../neko-4-forgot/forgot-1-ui/ForgotPage';
 import NekoPage from "../../neko-6-neko/neko-1-ui/NekoPage";
+
 
 export const START_GH_PAGES_PATH = '/neko-login-register-forgot';
 export const SIGN_IN_PATH = START_GH_PAGES_PATH + '/sign-in';

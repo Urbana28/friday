@@ -1,12 +1,27 @@
 import React from 'react';
 import Forgot from './Forgot';
+import {forgotTC} from "../forgot-2-bll/forgotThunks";
+import {connect} from "react-redux";
 
-const ForgotContainer: React.FC = () => {
-    // logic
+
+const ForgotContainer: React.FC = (props: any) => {
+
+
+    const forgotEmail = () => {
+        props.forgotTC(props.email);
+    };
 
     return (
-        <Forgot/>
+        <Forgot email={props.email} forgotEmail={forgotEmail}/>
     );
 };
 
-export default ForgotContainer;
+const mapStateToProps = (state: any) => {
+    return {
+        email: state.forgot.email
+    }
+};
+
+const Container = connect(mapStateToProps, {forgotTC})(ForgotContainer);
+
+export default Container;
