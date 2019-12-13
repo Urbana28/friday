@@ -1,5 +1,8 @@
-import React from "react";
-import './App.css';
+
+import React from 'react';
+import './App.module.css';
+
+
 import {BrowserRouter} from "react-router-dom";
 import Main from "./neko-1-main/main-1-ui/Main";
 import store from "./neko-1-main/main-2-bll/store";
