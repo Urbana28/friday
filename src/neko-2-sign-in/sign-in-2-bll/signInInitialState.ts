@@ -1,13 +1,11 @@
 export interface ISignInState {
     login: string,
     password: string,
-    isAuth: boolean,
-    userId: number
+    rememberMe: boolean
 }
 
 export const signInInitialState: ISignInState = {
-    login: 'hanna',
-    password: 'h2',
-    isAuth: false,
-    userId: 1
+    login: '',
+    password: '',
+    rememberMe: false
 };
