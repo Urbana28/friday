@@ -1,10 +1,12 @@
 import axios from 'axios';
-import {baseURL} from "../../base-url";
+
 
 const instance = axios.create({
-    baseURL
+    baseURL: 'https://ancient-gorge-20298.herokuapp.com/'
 });
 
 export const ForgotAPI = {
-
+    forgot(email: string) {
+        return instance.post(`auth/forgot`, {email})
+    }
 };

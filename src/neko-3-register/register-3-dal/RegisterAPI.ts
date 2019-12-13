@@ -1,10 +1,12 @@
 import axios from 'axios';
-import {baseURL} from "../../base-url";
+
 
 const instance = axios.create({
-    baseURL
+    baseURL: 'https://ancient-gorge-20298.herokuapp.com/'
 });
 
 export const RegisterAPI = {
-
+    registerMe (email: string, password: string) {
+        return instance.post('auth/register', {email, password})
+    }
 };
