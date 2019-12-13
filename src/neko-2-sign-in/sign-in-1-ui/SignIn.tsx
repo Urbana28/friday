@@ -1,34 +1,37 @@
-import React from 'react';
+import React, {SetStateAction, Dispatch} from 'react';
 import s from './../.././App.module.css'
-import ForgotPage from "../../neko-4-forgot/forgot-1-ui/ForgotPage";
+
+import { NavLink } from 'react-router-dom';
+
 
 interface SignInProps {
-
+    login: string,
+    password: string,
+    setLogin:  Dispatch<SetStateAction<string>>,
+    setPassword:  Dispatch<SetStateAction<string>>
 }
 
-const SignIn: React.FC<SignInProps> = ({}) => {
+const SignIn: React.FC<SignInProps> = ({login,password,setLogin,setPassword}) => {
 
     return (
         <div className={s.signIn}>
-            sign-in
             <div>
-                <input type="text" placeholder={'login'}/>
+                <input onChange={(e)=> setLogin(e.currentTarget.value)} type="text" placeholder={'login'} value={login}/>
             </div>
             <div>
-                <input type="text" placeholder={'password'}/>
+                <input onChange={(e)=> setPassword(e.currentTarget.value)} type="text" placeholder={'password'} value={password}/>
             </div>
 
             <div>
                 <button>Sign in</button>
             </div>
-            Forgot password?
-          {/*  <div>
-                <Navlink to='/forgotPage'></Navlink>
-            </div>*/}
+            <div>
+                <NavLink to='/forgotPage'>forgot password?</NavLink>
+            </div>
             <div>
                 <input type="checkbox"/> remember me
             </div>
-            Registration
+            <NavLink to='/registerPage'>Registration</NavLink>
 
 
         </div>
