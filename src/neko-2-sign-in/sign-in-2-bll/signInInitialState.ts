@@ -1,11 +1,16 @@
+import {Simulate} from "react-dom/test-utils";
+
+
 export interface ISignInState {
-    login: string,
-    password: string,
-    rememberMe: boolean
+    email: string | null
+    token: string | null
+    error: string | undefined
 }
 
 export const signInInitialState: ISignInState = {
-    login: '',
-    password: '',
-    rememberMe: false
+    email: null,
+    token: null,
+    error: undefined
 };
+
+

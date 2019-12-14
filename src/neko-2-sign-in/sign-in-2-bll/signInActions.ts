@@ -7,12 +7,12 @@ interface ISameAction {
 
 interface IData {
     email: string,
-    password: string,
-    rememberMe: boolean
+    token: string,
+    error: string | undefined
 }
 
 export type ISignInActions = ISameAction;
 
-export let setUser = (email: string, password: string, rememberMe: boolean): ISignInActions => {
-    return {type: SET_USER, data:{email, password, rememberMe} }
+export let setUser = (userData: IData): ISignInActions => {
+    return {type: SET_USER, data: userData}
 };
