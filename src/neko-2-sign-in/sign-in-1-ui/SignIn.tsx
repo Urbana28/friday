@@ -4,6 +4,7 @@ import s from './../.././App.module.css'
 
 import { NavLink, Redirect } from 'react-router-dom';
 import { NEKO_PATH } from '../../neko-1-main/main-1-ui/Routes';
+import Preloader from "./Preloader";
 
 
 
@@ -20,19 +21,24 @@ interface SignInProps {
     check: boolean
     error: string | undefined
     token: string | null
+    isFetching: boolean
 }
 
-const SignIn: React.FC<SignInProps> = ({token, email,password,setEmail,setPassword, check, setCheck, loginMe, error}) => {
+const SignIn: React.FC<SignInProps> = ({token, email,password,
+                                           setEmail,setPassword, check, setCheck,
+                                           loginMe, error, isFetching}) => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
         loginMe(email, password, check)
     };
 
+
     if(token) return <Redirect to={NEKO_PATH} />
     return (
         <div className={s.signIn}>
             {error && <span className={s.error}>{error}</span>}
+            {isFetching && <Preloader/>}
             <form onSubmit={handleSubmit}>
                 <div>
                     <input onChange={(e)=> setEmail(e.currentTarget.value)} type="text" placeholder={'login'} value={email}/>

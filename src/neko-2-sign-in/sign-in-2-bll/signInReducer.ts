@@ -10,6 +10,11 @@ export const signInReducer = (state = signInInitialState, action: ISignInActions
             ...state,
             ...action.data
         };
+        case 'IS_FETCHING_PRELOAD':
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
         default: {
             return state;
         }
