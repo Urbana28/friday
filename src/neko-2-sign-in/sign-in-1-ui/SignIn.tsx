@@ -2,7 +2,8 @@
 import React, {SetStateAction, Dispatch} from 'react';
 import s from './../.././App.module.css'
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
+import { NEKO_PATH } from '../../neko-1-main/main-1-ui/Routes';
 
 
 
@@ -17,22 +18,27 @@ interface SignInProps {
     setCheck: Dispatch<SetStateAction<boolean>>
     loginMe: (email: string, password: string, rememberMe: boolean) => void
     check: boolean
+    error: string | undefined
+    token: string | null
 }
 
-const SignIn: React.FC<SignInProps> = ({email,password,setEmail,setPassword, check, setCheck, loginMe}) => {
+const SignIn: React.FC<SignInProps> = ({token, email,password,setEmail,setPassword, check, setCheck, loginMe, error}) => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
         loginMe(email, password, check)
     };
+
+    if(token) return <Redirect to={NEKO_PATH} />
     return (
         <div className={s.signIn}>
+            {error && <span className={s.error}>{error}</span>}
             <form onSubmit={handleSubmit}>
                 <div>
                     <input onChange={(e)=> setEmail(e.currentTarget.value)} type="text" placeholder={'login'} value={email}/>
                 </div>
                 <div>
-                    <input onChange={(e)=> setPassword(e.currentTarget.value)} type="text" placeholder={'password'} value={password}/>
+                    <input onChange={(e)=> setPassword(e.currentTarget.value)} type="password" placeholder={'password'} value={password}/>
                 </div>
 
                 <div>

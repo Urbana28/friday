@@ -1,6 +1,8 @@
 import React from 'react';
 import './Register.css'
 import useForm from "react-hook-form";
+import { Redirect } from 'react-router-dom';
+import {SIGN_IN_PATH} from "../../neko-1-main/main-1-ui/Routes";
 
 
 interface RegisterProps {
@@ -16,8 +18,10 @@ const Register: React.FC<RegisterProps> = ({registerMe, success, error}) => {
     });
 
     const onSubmit = (data: any) => {
-        registerMe(data.email, data.value)
+        registerMe(data.email, data.password)
     };
+
+    if(success) return <Redirect to={SIGN_IN_PATH} />
 
     return (
         <div className='register'>
